@@ -1,0 +1,27 @@
+{
+    "name": "shakinm/laravel5-tinkoff",
+    "description": "Package - Tinkoff Merchant API",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mikhail Shakin",
+            "email": "m.shakin@digitalwand.ru"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Shakinm\\Tinkoff\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Shakinm\\Tinkoff\\TinkoffServiceProvider"
+            ],
+            "aliases": {
+                "Tinkoff": "Shakinm\\Tinkoff\\TinkoffFacade"
+            }
+        }
+    }
+}
