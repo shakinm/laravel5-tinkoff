@@ -8,11 +8,13 @@
 
 namespace Shakinm\Tinkoff;
 
+use Illuminate\Support\Facades\Facade;
+
 /**
  * Class TinkoffFacade
  * @package Shakinm\Tinkoff
  */
-class TinkoffFacade
+class TinkoffFacade extends Facade
 {
     /**
      * @return string

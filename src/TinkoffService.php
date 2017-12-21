@@ -1,43 +1,23 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: m.shakin@digitalwand.ru
+ * User: shakin
  * Date: 21.12.17
- * Time: 13:13
+ * Time: 18:18
  */
 
 namespace Shakinm\Tinkoff;
 
-
 require_once 'TinkoffMerchantAPI.php';
 
-/**
- * Class TinkoffService
- * @package Shakinm\Tinkoff
- */
-class TinkoffService
+class TinkoffService extends \TinkoffMerchantAPI
 {
-    private $tinkoff;
 
     /**
-     * TinkoffService constructor.
-     * @param $terminalKey
-     * @param $secretKey
-     * @param $api_url
+     * @return bool|string
      */
-    public function __construct($terminalKey, $secretKey, $api_url)
-    {
-        $this->tinkoff = new \TinkoffMerchantAPI($terminalKey, $secretKey, $api_url);
+    public function getStatus() {
+        return $this->__get('status');
     }
-
-    /**
-     * @return mixed
-     */
-    public function get()
-    {
-        return $this->tinkoff;
-    }
-
-
 
 }
