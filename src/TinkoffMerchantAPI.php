@@ -309,7 +309,7 @@ class TinkoffMerchantAPI
             curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
             curl_setopt($curl, CURLOPT_POST, true);
             curl_setopt($curl, CURLOPT_POSTFIELDS, $args);
-            curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+
             $out = curl_exec($curl);
 
             $this->_response = $out;
