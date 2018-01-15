@@ -40,9 +40,9 @@ class TinkoffServiceProvider extends ServiceProvider
         $this->app->singleton('tinkoff', function ($app) {
 
             $config = $app->make('config');
-            $terminalKey = $config->get('terminalKey');
-            $secretKey = $config->get('secretKey');
-            $api_url = $config->get('api_url');
+            $terminalKey = $config->get('tinkoff.terminalKey');
+            $secretKey = $config->get('tinkoff.secretKey');
+            $api_url = $config->get('tinkoff.api_url');
 
             return new TinkoffService($terminalKey, $secretKey, $api_url);
         });

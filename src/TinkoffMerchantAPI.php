@@ -300,7 +300,8 @@ class TinkoffMerchantAPI
         if (is_array($args)) {
             $args = http_build_query($args);
         }
-        Debug::trace($args);
+        $log = new \Illuminate\Support\Facades\Log();
+        $log::log('alert','Исходящий запрос в банк', ['data'=>$args]);
         if ($curl = curl_init()) {
             curl_setopt($curl, CURLOPT_URL, $api_url);
             curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
@@ -308,6 +309,7 @@ class TinkoffMerchantAPI
             curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
             curl_setopt($curl, CURLOPT_POST, true);
             curl_setopt($curl, CURLOPT_POSTFIELDS, $args);
+            curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
             $out = curl_exec($curl);
 
             $this->_response = $out;
