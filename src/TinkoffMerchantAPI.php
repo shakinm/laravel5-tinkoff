@@ -297,9 +297,12 @@ class TinkoffMerchantAPI
         //todo add string $args support
         //$proxy = 'http://192.168.5.22:8080';
         //$proxyAuth = '';
-        if (is_array($args)) {
-            $args = http_build_query($args);
-        }
+//        if (is_array($args)) {
+//            $args = http_build_query($args);
+//        }
+
+        $args=json_encode($args);
+
         $log = new \Illuminate\Support\Facades\Log();
         $log::log('alert','Исходящий запрос в банк', ['data'=>$args]);
         if ($curl = curl_init()) {
