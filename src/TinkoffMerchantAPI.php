@@ -118,6 +118,17 @@ class TinkoffMerchantAPI
     }
 
     /**
+     * Cancel payment
+     * @param $args
+     * @return mixed
+     * @throws HttpException
+     */
+    public function cancel($args)
+    {
+        return $this->buildQuery('Cancel', $args);
+    }
+
+    /**
      * Confirm 2-staged payment
      *
      * @param mixed $args Can be associative array or string
@@ -207,9 +218,9 @@ class TinkoffMerchantAPI
      *
      * @return mixed
      */
-    public function resend()
+    public function resend($args=[])
     {
-        return $this->buildQuery('Resend', array());
+        return $this->buildQuery('Resend', $args);
     }
 
     /**
@@ -231,6 +242,9 @@ class TinkoffMerchantAPI
             }
             if (! array_key_exists('Token', $args)) {
                 $args['Token'] = $this->_genToken($args);
+            }
+            if ($path=='Resend' && ! array_key_exists('NotificationType', $args)) {
+                $args['NotificationType'] = 'CONFIRMED';
             }
         }
         $url = $this->_combineUrl($url, $path);
@@ -304,7 +318,7 @@ class TinkoffMerchantAPI
         $args=json_encode($args);
 
         $log = new \Illuminate\Support\Facades\Log();
-        $log::log('alert','Исходящий запрос в банк', ['data'=>$args]);
+        $log::log('alert','Исходящий запрос в банк', ['url'=>$api_url,'data'=>$args]);
         if ($curl = curl_init()) {
             curl_setopt($curl, CURLOPT_URL, $api_url);
             curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);

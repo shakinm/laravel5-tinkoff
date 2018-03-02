@@ -49,7 +49,8 @@ return [
 * terminalKey - Уникальный идентификатор терминала. Выдается банком на каждый магазин.
 * secretKey - Используется для подписи запросов/ответов
 * api_url - URL для отправки запросов например: https://securepay.tinkoff.ru
-  
+ 
+ 
 ## IDE    
 Для того, чтобы работали подсказки в IDE установить    
 https://github.com/barryvdh/laravel-ide-helper
